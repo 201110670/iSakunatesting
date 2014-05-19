@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+ var cb = new ChildBrowser();
+  
+ document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        try {
+                window.plugins.childBrowser.onClose = closed;
+                window.plugins.childBrowser.showWebPage("http://gcccs.org/iSakuna-testing/index.html", {
+                    showLocationBar: false
+                });
+            }catch (err){
+                console.log(err);
+            }   
+    }
+     
+    function closed()
+    {
+        navigator.app.exitApp();
+    }   
+</script>
 </head>
 <body>
 <a href="http://gcccs.org/iSakuna-testing/index.html"> Go to Sample Site</a>
